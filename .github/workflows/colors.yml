@@ -18,7 +18,7 @@ jobs:
 
       - name: Extract and Color Code Build Status
         run: |
-          build_output="[ERROR] Tests run: 39, Failures: 12, Errors: 0, Skipped: 0"
+          build_output="[ERROR] Tests run: 39, Failures: 35, Errors: 0, Skipped: 0"
           failure_percentage=$(python -c "build_output = '$build_output'; parts = build_output.split(', '); tests_run = int(parts[0].split(': ')[1]); failures = int(parts[1].split(': ')[1]); errors = int(parts[2].split(': ')[1]); print((failures + errors) / tests_run * 100)")
           if (( $(echo "$failure_percentage < 10" | bc -l) )); then
             status_color="yellow"
