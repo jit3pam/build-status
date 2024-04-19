@@ -31,11 +31,9 @@ jobs:
       run: mvn -Dmaven.test.failure.ignore=true test > maven.log 2>&1
 
     - name: update build status
-      if: always()
-      shell: bash
       run: |
-        fail_percent = $(python -c "print(30);" )
-        if ("$fail_percent" gt 10 ) {
+        fail_percent = $(python -c "print(9);" )
+        if (( $(echo "$failure_percentage > 10" | bc -l) )); then
           exit 1
-        }
+        fi
         
