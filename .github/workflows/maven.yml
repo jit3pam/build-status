@@ -32,7 +32,7 @@ jobs:
 
     - name: update build status
       run: |
-        failure_percentage=$(python -c "print(9);")
+        failure_percentage=$(python -c "result=[x for x open('maven.log', 'r', encoding='utf-8').readlines() if 'Tests run:' in x]; total=result[0].split(',')[0].split(':')[1].strip(); failed=0; percent=int(failed)/int(total); print(percent);")
         if (( $(echo "$failure_percentage > 10" | bc -l) )); then
           exit 1
         fi
