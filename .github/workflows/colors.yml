@@ -1,0 +1,52 @@
+name: Color Code Build Status
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  color-code-build-status:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Extract and Color Code Build Status
+        run: |
+          build_output="[ERROR] Tests run: 39, Failures: 12, Errors: 0, Skipped: 0"
+          failure_percentage=$(python -c "build_output = '$build_output'; parts = build_output.split(', '); tests_run = int(parts[0].split(': ')[1]); failures = int(parts[1].split(': ')[1]); errors = int(parts[2].split(': ')[1]); print((failures + errors) / tests_run * 100)")
+          if (( $(echo "$failure_percentage < 10" | bc -l) )); then
+            status_color="yellow"
+          elif (( $(echo "$failure_percentage == 0" | bc -l) )); then
+            status_color="green"
+          else
+            status_color="red"
+          fi
+          echo "Status color: $status_color"
+          echo "::set-env name=BUILD_STATUS_COLOR::$status_color"
+        id: color-code
+
+      - name: Set Build Status Color
+        if: always()
+        run: echo "::set-output name=status_color::${{ env.BUILD_STATUS_COLOR }}"
+
+      - name: Show Build Status
+        if: always()
+        run: |
+          echo "Build status color: ${{ env.BUILD_STATUS_COLOR }}"
+          case "${{ env.BUILD_STATUS_COLOR }}" in
+            "green")
+              echo "::set-env name=BUILD_STATUS_COLOR::$status_color"
+              ;;
+            "yellow")
+              echo "::set-env name=BUILD_STATUS_COLOR::$status_color"
+              ;;
+            "red")
+              echo "::set-env name=BUILD_STATUS_COLOR::$status_color"
+              ;;
+            *)
+              echo "Invalid status color"
+              ;;
+          esac
