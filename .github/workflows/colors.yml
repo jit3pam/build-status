@@ -6,7 +6,7 @@ on:
       - main
 
 env:
-  ACTIONS_ALLOW_UNSECURE_COMMANDS=true
+  ACTIONS_ALLOW_UNSECURE_COMMANDS: true
 
 jobs:
   color-code-build-status:
