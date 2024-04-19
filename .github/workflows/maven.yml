@@ -29,3 +29,13 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn test > maven.log 2>&1
+
+    - name: update build status
+      if: always()
+      shell: bash
+      run: |
+        fail_percent = $(python -c "print(30);" )
+        if (fail_percent gt 10 ) {
+          exit 1
+        }
+        
