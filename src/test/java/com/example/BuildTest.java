@@ -9,4 +9,14 @@ public class BuildTest {
     public void test() {
         assertTrue(true);
     }
+
+    @Test
+    public void test1(){
+        assertTrue(false);
+    }
+
+    @Test
+    public void test2(){
+        assertTrue(true);
+    }
 }
