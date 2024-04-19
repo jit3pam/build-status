@@ -32,7 +32,7 @@ jobs:
 
     - name: update build status
       run: |
-        failure_percentage = $(python -c "print(9);" )
+        failure_percentage=$(python -c "print(9);")
         if (( $(echo "$failure_percentage > 10" | bc -l) )); then
           exit 1
         fi
