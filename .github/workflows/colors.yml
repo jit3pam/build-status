@@ -5,6 +5,9 @@ on:
     branches:
       - main
 
+env:
+  ACTIONS_ALLOW_UNSECURE_COMMANDS=true
+
 jobs:
   color-code-build-status:
     runs-on: ubuntu-latest
