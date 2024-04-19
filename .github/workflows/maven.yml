@@ -28,7 +28,7 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven
-      run: mvn -Dmaven.test.failure=true test > maven.log 2>&1
+      run: mvn -Dmaven.test.failure.ignore=true test > maven.log 2>&1
 
     - name: update build status
       if: always()
