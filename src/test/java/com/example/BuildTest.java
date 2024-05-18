@@ -19,4 +19,10 @@ public class BuildTest {
     public void test2(){
         assertTrue(true);
     }
+
+    @Test
+    public void test3(){
+        assertTrue(true);
+    }
+
 }
