@@ -30,4 +30,38 @@ public class BuildTest {
         assertTrue(true);
     }
 
+    @Test
+    public void test5(){
+        assertTrue(true);
+    }
+
+    @Test
+    public void test6(){
+        assertTrue(true);
+    }
+
+    @Test
+    public void test7(){
+        assertTrue(true);
+    }
+
+    @Test
+    public void test8(){
+        assertTrue(true);
+    }
+
+    @Test
+    public void test9(){
+        assertTrue(true);
+    }
+
+    @Test
+    public void test10(){
+        assertTrue(true);
+    }
+
+    @Test
+    public void test11(){
+        assertTrue(true);
+    }
 }
