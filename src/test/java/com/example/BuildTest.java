@@ -25,4 +25,9 @@ public class BuildTest {
         assertTrue(true);
     }
 
+    @Test
+    public void test4(){
+        assertTrue(true);
+    }
+
 }
